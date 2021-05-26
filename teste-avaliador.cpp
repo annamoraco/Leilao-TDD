@@ -29,13 +29,5 @@ TEST_CASE("Deve recuperar maior lance de leilão em ordem crescente") {
 	//  Verificação se o teste teve sucesso ou falha
 	// Assert - Then
 
-	float valoresperado = 1500;
-
-	if (valoresperado == leiloeiro.recuperaMaiorValor()) {
-		std::cout << "TESTE OK" << std::endl;
-	}
-	else {
-		std::cout << "TESTE FALHOU" << std::endl;
-	}
-	
+	REQUIRE(1500 == leiloeiro.recuperaMaiorValor());	
 }
