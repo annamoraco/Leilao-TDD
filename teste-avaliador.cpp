@@ -132,4 +132,7 @@ TEST_CASE("Deve recuperar os três maiores lance de leilão") {
 	std::vector<Lance> maiores3Lances = leiloeiro.recupera3maioresLances();
 
 	REQUIRE(3 == maiores3Lances.size());
+	REQUIRE(3000 == maiores3Lances[0].recuperaValor());
+	REQUIRE(1500 == maiores3Lances[1].recuperaValor());
+	REQUIRE(1250 == maiores3Lances[2].recuperaValor());
 }
