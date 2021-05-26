@@ -1,12 +1,18 @@
+#define CATCH_CONFIG_MAIN
+#include "catch.hpp"
 #include "Avaliador.hpp"
 #include <iostream>
+
+/*
 #include "Lance.hpp"
 #include "Leilao.hpp"
 #include "Usuario.hpp"
+*/
 
-int main() {
+TEST_CASE("Deve recuperar maior lance de leilão em ordem crescente") {
 
 	// Preparação do ambiente - organiza as condições/cenário para o teste
+	// Arrange - Given
 
 	Lance primeiroLance(Usuario("Anna Moraco"), 1000);
 	Lance segundoLance(Usuario("Rodrigo Mendes"), 1500);
@@ -15,11 +21,13 @@ int main() {
 	leilao.recebeLance(primeiroLance);
 
 	// Execução do código que será testado
+	// Act - When
 
 	Avaliador leiloeiro;
 	leiloeiro.avalia(leilao);
 
 	//  Verificação se o teste teve sucesso ou falha
+	// Assert - Then
 
 	float valoresperado = 1500;
 
@@ -30,6 +38,4 @@ int main() {
 		std::cout << "TESTE FALHOU" << std::endl;
 	}
 	
-
-	return 0;
 }
