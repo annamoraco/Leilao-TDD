@@ -1,13 +1,6 @@
-#define CATCH_CONFIG_MAIN
 #include "catch.hpp"
 #include "Avaliador.hpp"
 #include <iostream>
-
-/*
-#include "Lance.hpp"
-#include "Leilao.hpp"
-#include "Usuario.hpp"
-*/
 
 Leilao emOrdemCrescente()
 {
@@ -96,32 +89,4 @@ TEST_CASE("Avaliador") {
 		REQUIRE(1500 == maiores3Lances[1].recuperaValor());
 		REQUIRE(1250 == maiores3Lances[2].recuperaValor());
 	}
-}
-
-TEST_CASE("Leilao não pode receber lance consecutivo do mesmo usuário") 
-{
-	// Arrange
-	Leilao leilao("Fiat 147 0km");
-	Usuario anna("Anna Moraco");
-	
-	Lance primeiroLance(anna, 1000);
-	Lance segundoLance(anna, 1500);
-
-	// Act
-	leilao.recebeLance(primeiroLance);
-	leilao.recebeLance(segundoLance);
-
-	// Assert
-	REQUIRE(1 == leilao.recuperaLances().size());
-}
-
-TEST_CASE("Usuario deve saber informar seu primeiro nome")
-{
-	// Arrange
-	Usuario anna("Anna");
-
-	std::string primeiroNome = anna.recuperaPrimeiroNome();
-
-	// Assert
-	REQUIRE("Anna" == primeiroNome);
 }
