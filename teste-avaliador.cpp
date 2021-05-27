@@ -19,7 +19,7 @@ Leilao emOrdemCrescente()
 	return leilao;
 }
 
-Leilao emOrdemDescrescente() 
+Leilao emOrdemDecrescente() 
 {
 	Lance primeiroLance(Usuario("Anna Moraco"), 1000);
 	Lance segundoLance(Usuario("Rodrigo Mendes"), 1500);
@@ -29,32 +29,12 @@ Leilao emOrdemDescrescente()
 	return leilao;
 }
 
-
-TEST_CASE("Deve recuperar maior lance de leilão em ordem decrescente") {
-
-	// Preparação do ambiente - organiza as condições/cenário para o teste
-	// Arrange - Given
-
-	Leilao leilao = emOrdemDescrescente();
-	Avaliador leiloeiro;
-
-	// Execução do código que será testado
-	// Act - When
-
-	leiloeiro.avalia(leilao);
-
-	//  Verificação se o teste teve sucesso ou falha
-	// Assert - Then
-
-	REQUIRE(1500 == leiloeiro.recuperaMaiorValor());	
-}
-
-TEST_CASE("Deve recuperar maior lance de leilão em ordem crescente") {
+TEST_CASE("Deve recuperar maior lance de leilão ") {
 
 	// Preparação do ambiente - organiza as condições/cenário para o teste
 	// Arrange - Given
 
-	Leilao leilao = emOrdemCrescente();
+	Leilao leilao = GENERATE(emOrdemCrescente(), emOrdemDecrescente());
 	Avaliador leiloeiro;
 
 	// Execução do código que será testado
@@ -68,36 +48,17 @@ TEST_CASE("Deve recuperar maior lance de leilão em ordem crescente") {
 	REQUIRE(1500 == leiloeiro.recuperaMaiorValor());
 }
 
-TEST_CASE("Deve recuperar menor lance de leilão em ordem crescente") {
+TEST_CASE("Deve recuperar menor lance de leilão ") {
 
 	// Preparação do ambiente - organiza as condições/cenário para o teste
 	// Arrange - Given
 
-	Leilao leilao = emOrdemCrescente();
+	Leilao leilao = GENERATE(emOrdemCrescente(), emOrdemDecrescente());
 	Avaliador leiloeiro;
 
 	// Execução do código que será testado
 	// Act - When
 	
-	leiloeiro.avalia(leilao);
-
-	//  Verificação se o teste teve sucesso ou falha
-	// Assert - Then
-
-	REQUIRE(1000 == leiloeiro.recuperaMenorValor());
-}
-
-TEST_CASE("Deve recuperar menor lance de leilão em ordem decrescente") {
-
-	// Preparação do ambiente - organiza as condições/cenário para o teste
-	// Arrange - Given
-
-	Leilao leilao = emOrdemDescrescente();
-	Avaliador leiloeiro;
-
-	// Execução do código que será testado
-	// Act - When
-
 	leiloeiro.avalia(leilao);
 
 	//  Verificação se o teste teve sucesso ou falha
