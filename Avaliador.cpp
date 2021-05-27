@@ -34,5 +34,5 @@ std::vector<Lance> Avaliador::recupera3maioresLances() const
 
 bool Avaliador::ordenaLances(const Lance& lance1, const Lance& lance2)
 {
-	return lance1.recuperaValor() < lance2.recuperaValor();
+	return lance1.recuperaValor() > lance2.recuperaValor();
 }
